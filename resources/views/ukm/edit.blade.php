@@ -33,6 +33,12 @@
                         <x-input-error :messages="$errors->get('about')" class="mt-2" />
                     </div>
 
+                    <div>
+                        <x-input-label for="batas_pendaftaran" :value="__('Batas Pendaftaran')" />
+                        <x-text-input id="batas_pendaftaran" class="block mt-1 w-full" type="date" name="batas_pendaftaran" :value="old('batas_pendaftaran')" required autofocus autocomplete="batas_pendaftaran" />
+                        <x-input-error :messages="$errors->get('batas_pendaftaran')" class="mt-2" />
+                    </div>
+
                     <div class="flex items-center justify-end mt-4">
                         <button type="submit" class="font-bold py-4 px-6 bg-indigo-700 text-white rounded-full">
                             Update New ukm

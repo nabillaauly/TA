@@ -62,6 +62,11 @@ class UkmController extends Controller
                 // Tambahkan slug dan ID 
                 $validated['slug'] = Str::slug($validated['name']);
                 $validated['Adminukm_id'] = $user->id;
+
+                // Tambahkan validasi batas_pendaftaran jika ada
+                if ($request->filled('batas_pendaftaran')) {
+                    $validated['batas_pendaftaran'] = $request->input('batas_pendaftaran');
+                }
     
                 // Buat data company baru
                 ukm::create($validated);
@@ -109,8 +114,13 @@ class UkmController extends Controller
                     }
                 }
 
+                $validated = $request->validated();
+                if ($request->filled('batas_pendaftaran')) {
+                    $validated['batas_pendaftaran'] = $request->input('batas_pendaftaran');
+                }
+
                 $validated['slug'] = Str::slug($validated['name']);
-                $ukm->update($validated);
+                $ukm->update($validated);               
             });
         } catch (\Exception $e) {
             logger('Error: ' . $e->getMessage());

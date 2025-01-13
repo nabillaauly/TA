@@ -164,7 +164,7 @@
             <div class="ukm-card-body">
                 <h5 class="ukm-card-title">{{ $ukm->name }}</h5>
                 <p class="ukm-card-text">{{ $ukm->about }}</p>
-                <p class="registration-deadline">Batas Pendaftaran</p>
+                <p class="registration-deadline">Batas Pendaftaran: {{ $ukm->batas_pendaftaran }}</p>
                 <a href="#" class="ukm-card-btn" data-toggle="modal" data-target="#choirModal">Daftar Sekarang</a>
             </div>
         </div>

@@ -25,7 +25,7 @@ class Storeukmrequest extends FormRequest
             'name' => ['required','string', 'max:255','unique:'.ukm::class],
             'logo'  => ['required', 'image', 'mimes:png,jpg,jpeg','max:2048'],
             'about' => ['required', 'string', 'max:65535'],
-
+            'batas_pendaftaran' => 'nullable|date|after_or_equal:today',
         ];
     }
 }

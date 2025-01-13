@@ -16,6 +16,7 @@ class Ukm extends Model
         'logo',
         'slug',
         'about',
+        'batas_pendaftaran',
         'Adminukm_id', // Pastikan ini benar
     ];
 

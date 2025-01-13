@@ -39,6 +39,13 @@
                     </p>
                 </div>
 
+                <div>
+                    <h3 class="text-indigo-950 text-xl font-bold">Batas Tanggal Pendaftaran</h3>
+                    <p>
+                        {{$ukm->batas_pendaftaran}}
+                    </p>
+                </div>
+
 
             </div>
         </div>
