@@ -15,23 +15,31 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    @can('manage pengguna')
                     <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
-                        {{ __('pengguna') }}
+                        {{ __('Pengguna') }}
+                    </x-nav-link>  
+                    @endcan
+                  
+                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                        {{ __('Recruitment') }}
                     </x-nav-link>
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('recruitment') }}
+                        {{ __('Riwayat_pendaftaran') }}
                     </x-nav-link>
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('riwayat_pendaftaran') }}
+                        {{ __('Forum') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('forum') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    @unless(auth()->user()->hasRole('super_admin'))
+                    @can('manage ukm')
+                    <x-nav-link :href="route('ukm.index')" :active="request()->routeIs('dashboard')">
                         {{ __('UKM') }}
                     </x-nav-link>
+                    @endcan 
+                    @endunless
+                  
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('data_pendaftar') }}
+                        {{ __('Data_pendaftar') }}
                     </x-nav-link>
                   
                 </div>

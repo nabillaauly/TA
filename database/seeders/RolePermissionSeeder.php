@@ -22,7 +22,7 @@ class RolePermissionSeeder extends Seeder
             'manage reqruitment',
             'manage riwayat_pendaftaran',
             'manage forum',
-            'UKM',
+            'manage ukm',
             'data_pendaftar',
         ];
 
@@ -38,9 +38,9 @@ class RolePermissionSeeder extends Seeder
         $userPermissions = ['manage riwayat_pendaftaran'];
         $userRole->syncPermissions($userPermissions);
 
-        $userRole = Role::firstOrCreate(['name' => 'AdminUkm']);
-        $userPermissions = ['UKM','Data Pendaftar', 'manage reqruitment'];
-        $userRole->syncPermissions($userPermissions);
+        $AdminukmRole = Role::firstOrCreate(['name' => 'Adminukm']);
+        $AdminukmPermissions = ['manage ukm','data_pendaftar', 'manage reqruitment'];
+        $AdminukmRole->syncPermissions($AdminukmPermissions);
 
         $superAdminRole = Role::firstOrCreate(['name' => 'super_admin']);
         $superAdminPermissions = ['manage pengguna', 'manage forum'];

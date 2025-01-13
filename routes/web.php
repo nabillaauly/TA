@@ -1,41 +1,37 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UkmController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\FrontController;
 
-Route::get('/', function () {
-    return view('index');
+
+Route::get('/', [FrontController::class, 'index']);
+
+Route::get('/about', [FrontController::class, 'about']);
+
+Route::get('/contact', [FrontController::class, 'contact']);
+
+Route::get('/forum', [FrontController::class, 'forum']);
+
+Route::get('/rekomendasi', [FrontController::class, 'rekomendasi']);
+
+Route::get('/recruitment', [FrontController::class, 'recruitment']);
+
+Route::get('/padus', [FrontController::class, 'padus']);
+
+Route::get('/register', [FrontController::class, 'register'])->name('register');
+
+
+Route::middleware(['auth', 'can:manage ukm'])->group(function () {
+    Route::resource('ukm', UkmController::class);
 });
 
-Route::get('/about', function () {
-    return view('pages/about');
-});
-
-Route::get('/contact', function () {
-    return view('pages/contact');
-});
-
-Route::get('/forum', function () {
-    return view('pages/forum');
-});
-
-Route::get('/rekomendasi', function () {
-    return view('pages/rekomendasi');
-});
-
-Route::get('/recruitment', function () {
-    return view('pages/recruitment');
-});
-
-Route::get('/padus', function () {
-    return view('pages/padus');
-});
-
-
-// Route::middleware(['auth', 'can:manage users'])->group(function () {
+ Route::middleware(['auth', 'can: manage pengguna'])->group(function () {
     Route::resource('users', UserController::class);
-
+ });
+ 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

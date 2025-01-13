@@ -155,34 +155,27 @@
       <div class="container">
          <div class="row justify-content-center">
 
+         
             <!-- UKM Paduan Suara Card -->
-            <div class="col-md-6 col-lg-4">
-               <div class="card ukm-card">
-                  <img class="card-img-top" src="images/padus.png" alt="UKM Choir">
-                  <div class="ukm-card-body">
-                     <h5 class="ukm-card-title">UKM Paduan Suara</h5>
-                     <p class="ukm-card-text">Pendaftaran UKM Paduan Suara sekarang dibuka! Bergabunglah untuk
-                        meningkatkan bakat vokal Anda dan tampil di berbagai acara kampus.</p>
-                     <p class="registration-deadline">Batas Pendaftaran: 31 Desember 2024</p>
-                     <a href="#" class="ukm-card-btn" data-toggle="modal" data-target="#choirModal">Daftar Sekarang</a>
-                  </div>
-               </div>
+            @forelse ($ukms as $ukm)
+    <div class="col-md-6 col-lg-4">
+        <div class="card ukm-card">
+            <img class="card-img-top" src="{{ Storage::url($ukm->logo) }}" alt="UKM Choir">
+            <div class="ukm-card-body">
+                <h5 class="ukm-card-title">{{ $ukm->name }}</h5>
+                <p class="ukm-card-text">{{ $ukm->about }}</p>
+                <p class="registration-deadline">Batas Pendaftaran</p>
+                <a href="#" class="ukm-card-btn" data-toggle="modal" data-target="#choirModal">Daftar Sekarang</a>
             </div>
+        </div>
+    </div>
+@empty
+    <p>Belum ada UKM yang terdaftar.</p>
+@endforelse
+
 
             <!-- UKM Tari Card -->
-            <div class="col-md-6 col-lg-4">
-               <div class="card ukm-card">
-                  <img class="card-img-top" src="images/tari.png" alt="UKM Tari">
-                  <div class="ukm-card-body">
-                     <h5 class="ukm-card-title">UKM Tari</h5>
-                     <p class="ukm-card-text">Pendaftaran UKM Tari sekarang dibuka! Bergabunglah untuk mengasah
-                        kemampuan tari Anda dan berpartisipasi dalam pertunjukan kampus.</p>
-                     <p class="registration-deadline">Batas Pendaftaran: 15 Januari 2025</p>
-                     <!-- Update data-toggle and data-target for UKM Tari -->
-                     <a href="#" class="ukm-card-btn" data-toggle="modal" data-target="#danceModal">Daftar Sekarang</a>
-                  </div>
-               </div>
-            </div>
+            
             <!-- end UKM Registration Card Section -->
          </div>
          <!-- Modal for UKM Paduan Suara -->
