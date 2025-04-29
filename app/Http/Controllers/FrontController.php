@@ -49,4 +49,9 @@ class FrontController extends Controller
     {
         return view('register');
     }
+
+    public function history()
+    {
+        return view('ukm.Riwayat_pendaftaran');
+    }
 }

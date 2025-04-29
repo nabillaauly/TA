@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
+                    <img src="/images/logo.png" alt="" class="block h-14 w-auto fill-current text-gray-800">
                     </a>
                 </div>
 
@@ -19,14 +19,14 @@
                     <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
                         {{ __('Pengguna') }}
                     </x-nav-link>  
-                    @endcan
-                  
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Recruitment') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('user.Riwayat_pendaftaran')" :active="request()->routeIs('dashboard')">
                         {{ __('Riwayat_pendaftaran') }}
                     </x-nav-link>
+                    @endcan
+                  
+                    <!-- <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                        {{ __('Recruitment') }}
+                    </x-nav-link> -->
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Forum') }}
                     </x-nav-link>
@@ -35,7 +35,14 @@
                     <x-nav-link :href="route('ukm.index')" :active="request()->routeIs('dashboard')">
                         {{ __('UKM') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('ukm.recomendation')" :active="request()->routeIs('dashboard')">
+                        {{ __('Form Rekomendasi') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('ukm.Riwayat_pendaftaran')" :active="request()->routeIs('dashboard')">
+                        {{ __('Riwayat_pendaftaran') }}
+                    </x-nav-link>
                     @endcan 
+                   
                     @endunless
                   
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">

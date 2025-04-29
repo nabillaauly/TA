@@ -169,9 +169,9 @@
                            <li class="nav-item">
                               <a class="nav-link" href="{{ url('/recruitment') }}">Recruitment</a>
                            </li>
-                           <li class="nav-item">
+                           <!-- <li class="nav-item">
                               <a class="nav-link" href="{{ url('/forum') }}">Forum Diskusi</a>
-                           </li>
+                           </li> -->
                            <li class="nav-item">
                               <a class="nav-link" href="{{ url('/contact') }}">Bantuan</a>
                            </li>

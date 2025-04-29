@@ -65,9 +65,9 @@
                            <li class="nav-item">
                               <a class="nav-link" href="{{ url('/recruitment') }}">Recruitment</a>
                            </li>
-                           <li class="nav-item">
+                           <!-- <li class="nav-item">
                               <a class="nav-link" href="{{ url('/forum') }}">Forum Diskusi</a>
-                           </li>
+                           </li> -->
                            <li class="nav-item">
                               <a class="nav-link" href="{{ url('/contact') }}">Bantuan</a>
                            </li>
@@ -108,7 +108,7 @@
                                        <div class="board">
                                           <i><img src="images/top_icon.png" alt="#"/></i>
                                           <h3>
-                                             UKM<br> Connect<br> 
+                                             Ormawa<br> Connect<br> 
                                           </h3>
                                           <div class="link_btn">
                                              <a class="read_more" href="Javascript:void(0)">Read More   <span></span></a>
@@ -131,7 +131,7 @@
                                        <div class="board">
                                           <i><img src="images/top_icon.png" alt="#"/></i>
                                           <h3>
-                                             UKM<br> Connect<br>
+                                             Ormawa<br> Connect<br>
                                           </h3>
                                           <div class="link_btn">
                                              <a class="read_more" href="Javascript:void(0)">Read More   <span></span></a>
@@ -154,7 +154,7 @@
                                        <div class="board">
                                           <i><img src="images/top_icon.png" alt="#"/></i>
                                           <h3>
-                                             UKM<br> Connect<br> 
+                                             Ormawa<br> Connect<br> 
                                           </h3>
                                           <div class="link_btn">
                                              <a class="read_more" href="Javascript:void(0)">Read More<span></span></a>
@@ -232,9 +232,9 @@
             <div class="row d_flex">
                <div class="col-md-6">
                   <div class="titlepage text_align_left">
-                     <h2 style="padding-left: 60px">Tentang <br>UKM Connect</h2>
+                     <h2 style="padding-left: 60px">Tentang <br>Ormawa Connect</h2>
                      <div class="indexpage">
-                        <p>Selamat datang di platform Rekomendasi UKM Kampus! Kami hadir untuk membantu mahasiswa baru menemukan Unit Kegiatan Mahasiswa (UKM) yang paling sesuai dengan minat, bakat, dan tujuan pribadi mereka. Website ini dirancang untuk mempermudah mahasiswa dalam menjelajahi berbagai UKM di kampus, memberikan informasi terperinci, serta menyediakan fitur-fitur yang inovatif dan interaktif
+                        <p>Selamat datang di platform Rekomendasi Ormawa Kampus! Kami hadir untuk membantu mahasiswa menemukan Organisasi Kemahasiswaan (ORMAWA) yang paling sesuai dengan minat, bakat, dan tujuan pribadi mereka. Website ini dirancang untuk mempermudah mahasiswa dalam menjelajahi berbagai organisasi di kampus, memberikan informasi terperinci, serta menyediakan fitur-fitur yang inovatif dan interaktif
                         </p>
                      </div>                     
                      <div class="link_btn">

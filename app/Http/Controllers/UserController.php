@@ -8,6 +8,7 @@ use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use App\Models\recruitment;
 
 class UserController extends Controller
 {
@@ -109,5 +110,11 @@ class UserController extends Controller
         if ($user->avatar) {
             Storage::disk('public')->delete($user->avatar);
         }
+    }
+
+    public function riwayat()
+    {        
+        $recruitments = Recruitment::with('Adminukm')->get();
+        return view('ukm.Riwayat_pendaftaran', compact('recruitments'));
     }
 }

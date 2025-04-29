@@ -128,9 +128,7 @@
                         <li class="nav-item active">
                            <a class="nav-link" href="{{ url('/rekruitment') }}">Recruitment</a>
                         </li>
-                        <li class="nav-item">
-                           <a class="nav-link" href="{{ url('/forum') }}">Forum Diskusi</a>
-                        </li>
+                       
                         <li class="nav-item">
                            <a class="nav-link" href="{{ url('/contact') }}">Bantuan</a>
                         </li>
@@ -140,7 +138,8 @@
             </div>
             <div class="col-md-2">
                <ul class="email text_align_right">
-               <li class="d_none"><a href="{{ url('/dashboard') }}"><i class="fa fa-user" aria-hidden="true"></i></a></li>
+                  <li class="d_none"><a href="{{ url('/dashboard') }}"><i class="fa fa-user" aria-hidden="true"></i></a>
+                  </li>
                   <li class="d_none"> <a href="Javascript:void(0)"><i class="fa fa-search" style="cursor: pointer;"
                            aria-hidden="true"></i></a> </li>
                </ul>
@@ -154,28 +153,23 @@
    <div class="ukm-card-section">
       <div class="container">
          <div class="row justify-content-center">
-
-         
             <!-- UKM Paduan Suara Card -->
             @forelse ($ukms as $ukm)
-    <div class="col-md-6 col-lg-4">
-        <div class="card ukm-card">
-            <img class="card-img-top" src="{{ Storage::url($ukm->logo) }}" alt="UKM Choir">
-            <div class="ukm-card-body">
-                <h5 class="ukm-card-title">{{ $ukm->name }}</h5>
-                <p class="ukm-card-text">{{ $ukm->about }}</p>
-                <p class="registration-deadline">Batas Pendaftaran: {{ $ukm->batas_pendaftaran }}</p>
-                <a href="#" class="ukm-card-btn" data-toggle="modal" data-target="#choirModal">Daftar Sekarang</a>
+            <div class="col-md-6 col-lg-4 mb-4">
+               <div class="card ukm-card">
+                 <img class="card-img-top" src="{{ Storage::url($ukm->logo) }}" alt="UKM Choir">
+                 <div class="ukm-card-body">
+                   <h5 class="ukm-card-title">{{ $ukm->name }}</h5>
+                   <p class="ukm-card-text">{{ $ukm->about }}</p>
+                   <p class="registration-deadline">Batas Pendaftaran: {{ $ukm->batas_pendaftaran }}</p>
+                   <a href="#" class="ukm-card-btn" data-toggle="modal" data-target="#choirModal">Daftar Sekarang</a>
+                 </div>
+               </div>
             </div>
-        </div>
-    </div>
-@empty
-    <p>Belum ada UKM yang terdaftar.</p>
-@endforelse
+         @empty
+         <p>Belum ada UKM yang terdaftar.</p>
+      @endforelse
 
-
-            <!-- UKM Tari Card -->
-            
             <!-- end UKM Registration Card Section -->
          </div>
          <!-- Modal for UKM Paduan Suara -->
@@ -191,48 +185,90 @@
                   </div>
                   <div class="modal-body">
                      <form action="{{ url('/register/choir') }}" method="post" enctype="multipart/form-data">
+                        @csrf
                         <div class="form-group">
-                           <label for="name">Nama Lengkap</label>
-                           <input type="text" class="form-control" id="name" name="name" required>
+                           <label for="nama_lengkap">Nama Lengkap</label>
+                           <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap" required>
+                           @error('nama_lengkap')
+                        <small class="text-danger">{{ $message }}</small>
+                     @enderror
                         </div>
                         <div class="form-group">
                            <label for="nim">Nomor Induk Mahasiswa (NIM)</label>
                            <input type="text" class="form-control" id="nim" name="nim" required>
+                           @error('nim')
+                        <small class="text-danger">{{ $message }}</small>
+                     @enderror
                         </div>
                         <div class="form-group">
                            <label for="email">Email</label>
                            <input type="email" class="form-control" id="email" name="email" required>
+                           @error('email')
+                        <small class="text-danger">{{ $message }}</small>
+                     @enderror
                         </div>
                         <div class="form-group">
-                           <label for="phone">Nomor Telepon/WhatsApp</label>
-                           <input type="text" class="form-control" id="phone" name="phone" required>
+                           <label for="no_telepon">WhatsApp</label>
+                           <input type="text" class="form-control" id="no_telepon" name="no_telepon" required>
+                           @error('no_telepon')
+                        <small class="text-danger">{{ $message }}</small>
+                     @enderror
                         </div>
                         <div class="form-group">
-                           <label for="study_program">Program Studi</label>
-                           <input type="text" class="form-control" id="study_program" name="study_program" required>
+                           <label for="program_studi">Program Studi</label>
+                           <input type="text" class="form-control" id="program_studi" name="program_studi" required>
+                           @error('program_studi')
+                        <small class="text-danger">{{ $message }}</small>
+                     @enderror
                         </div>
                         <div class="form-group">
-                           <label for="year">Semester</label>
-                           <input type="number" class="form-control" id="year" name="year" required>
+                           <div class="form-group">
+                              <label for="semester">Semester</label>
+                              <select class="form-control" id="semester" name="semester" required>
+                                 <option value="1">Semester 1</option>
+                                 <option value="2">Semester 2</option>
+                                 <option value="3">Semester 3</option>
+                                 <option value="4">Semester 4</option>
+                                 <option value="5">Semester 5</option>
+                                 <option value="6">Semester 6</option>
+                                 <option value="7">Semester 7</option>
+                                 <option value="8">Semester 8</option>
+                              </select>
+                           </div>
+                           @error('semester')
+                        <small class="text-danger">{{ $message }}</small>
+                     @enderror
                         </div>
                         <div class="form-group">
-                           <label for="gender">Jenis Kelamin</label>
-                           <select class="form-control" id="gender" name="gender" required>
+                           <label for="jenis_kelamin">Jenis Kelamin</label>
+                           <select class="form-control" id="jenis_kelamin" name="jenis_kelamin" required>
                               <option value="Male">Laki-Laki</option>
                               <option value="Female">Perempuan</option>
                            </select>
+                           @error('jenis_kelamin')
+                        <small class="text-danger">{{ $message }}</small>
+                     @enderror
                         </div>
                         <div class="form-group">
-                           <label for="reason">Alasan Bergabung dengan UKM Paduan Suara</label>
-                           <textarea class="form-control" id="reason" name="reason" rows="3" required></textarea>
+                           <label for="alasan">Alasan Bergabung dengan UKM Paduan Suara</label>
+                           <textarea class="form-control" id="alasan" name="alasan" rows="3" required></textarea>
+                           @error('alasan')
+                        <small class="text-danger">{{ $message }}</small>
+                     @enderror
                         </div>
                         <div class="form-group form-check">
                            <input type="checkbox" class="form-check-input" id="agree" name="agree" required>
                            <label class="form-check-label" for="agree">Saya bersedia bergabung dengan UKM ini</label>
+                           @error('agree')
+                        <small class="text-danger">{{ $message }}</small>
+                     @enderror
                         </div>
                         <div class="form-group">
-                           <label for="photo">Foto Diri</label>
-                           <input type="file" class="form-control" id="photo" name="photo">
+                           <label for="foto_diri">Foto Diri (Optional)</label>
+                           <input type="file" class="form-control" id="foto_diri" name="foto_diri" accept="image/*">
+                           @error('foto_diri')
+                        <small class="text-danger">{{ $message }}</small>
+                     @enderror
                         </div>
                         <button type="submit" class="btn btn-primary">Kirim</button>
                      </form>
@@ -240,6 +276,7 @@
                </div>
             </div>
          </div>
+
 
 
          <!-- Modal for UKM Tari -->
@@ -276,9 +313,28 @@
                            <input type="text" class="form-control" id="study_program" name="study_program" required>
                         </div>
                         <div class="form-group">
-                           <label for="year">Semester</label>
-                           <input type="number" class="form-control" id="year" name="year" required>
+                           <label for="semester">Semester</label>
+                           <select class="form-control" id="semester" name="semester" required>
+                              <option value="1">Semester 1</option>
+                              <option value="2">Semester 2</option>
+                              <option value="3">Semester 3</option>
+                              <option value="4">Semester 4</option>
+                              <option value="5">Semester 5</option>
+                              <option value="6">Semester 6</option>
+                              <option value="7">Semester 7</option>
+                              <option value="8">Semester 8</option>
+                           </select>
                         </div>
+                        <!-- <select class="form-control" id="year" name="year" required>
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                              <option value="5">5</option>
+                              <option value="6">6</option>
+                              <option value="7">7</option>
+                              <option value="8">8</option>
+                           </select> -->
                         <div class="form-group">
                            <label for="gender">Jenis Kelamin</label>
                            <select class="form-control" id="gender" name="gender" required>

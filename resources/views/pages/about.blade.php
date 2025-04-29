@@ -131,9 +131,9 @@
                         <li class="nav-item">
                            <a class="nav-link" href="{{ url('/rekruitmen') }}">Recruitment</a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                            <a class="nav-link" href="{{ url('/forum') }}">Forum Diskusi</a>
-                        </li>
+                        </li> -->
                         <li class="nav-item">
                            <a class="nav-link" href="{{ url('/contact') }}">Bantuan</a>
                         </li>
@@ -158,7 +158,7 @@
             <div class="row d_flex">
                <div class="col-md-6">
                   <div class="titlepage text_align_left">
-                     <h2>Tentang UKM Connect</h2>
+                     <h2>Tentang Ormawa Connect</h2>
                      <p> Selamat datang di platform Rekomendasi UKM Kampus! Kami hadir untuk membantu mahasiswa baru menemukan Unit Kegiatan Mahasiswa (UKM) yang paling sesuai dengan minat, bakat, dan tujuan pribadi mereka. Website ini dirancang untuk mempermudah mahasiswa dalam menjelajahi berbagai UKM di kampus, memberikan informasi terperinci, serta menyediakan fitur-fitur yang inovatif dan interaktif.</p>
                      <p> Website ini juga bertujuan untuk mendukung pengembangan diri mahasiswa di luar akademik. Melalui platform ini, mahasiswa dapat dengan mudah mengeksplorasi berbagai pilihan UKM yang tersedia, mengetahui kegiatan yang dilakukan, manfaat bergabung, dan berinteraksi langsung dengan pengurus masing-masing UKM. Kami juga menyediakan rekomendasi berdasarkan minat dan hobi mahasiswa, membantu mereka menemukan komunitas yang tepat untuk berkolaborasi, berkembang, dan menambah pengalaman selama masa studi. Dengan fitur-fitur inovatif seperti forum diskusi dan informasi perekrutan yang terbuka, kami berharap mahasiswa dapat membuat keputusan yang lebih terinformasi dan bergabung dengan UKM yang sesuai dengan tujuan pribadi mereka.</p>
                   </div>
@@ -172,8 +172,8 @@
          <div class="container">
             <div class="row">
                <div class="col-md-12">
-                  <h3 class="section-title">Jelajah UKM</h3>
-                  <p class="section-description">Politeknik Harapan Bersama memberi kesempatan bagi mahasiswa untuk mengembangkan ataupun melatih kemampuan yang dimiliki dalam Unit Kegiatan Mahasiswa (UKM).</p>
+                  <h3 class="section-title">Jelajah Ormawa</h3>
+                  <p class="section-description">Politeknik Harapan Bersama memberi kesempatan bagi mahasiswa untuk mengembangkan ataupun melatih kemampuan yang dimiliki dalam Organisasi Kemahasiswaan (ORMAWA).</p>
                   <ul class="ukm-list">
                   <li><a href="/padus"><img src="images/padus.png" alt="UKM Paduan Suara" class="ukm-icon"> UKM Paduan Suara</a></li>
                   <li><a href="#"><img src="images/tari.png" alt="UKM Tari" class="ukm-icon"> UKM Tari</a></li>
