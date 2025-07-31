@@ -45,8 +45,8 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-    public function isAdminukm()
+    public function isAdmin()
     {
-        return $this->hasRole('Adminukm');
+        return $this->hasAnyRole(['Adminukm', 'AdminOrmawa']);
     }
 }

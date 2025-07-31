@@ -1,235 +1,152 @@
 <x-app-layout>
     <x-slot name="header">
         <div class="flex flex-row justify-between items-center">
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                {{ __('My ukm') }}
+            <h2 class="font-bold text-2xl text-blue-700 leading-tight">
+                {{ __('My UKM') }}
             </h2>
         </div>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-10 flex flex-col gap-y-5">
-            <form action="{{ url('/admin/store') }}" method="POST">
-               @csrf
+    <div class="py-10 bg-blue-50 min-h-screen">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="bg-white rounded-2xl shadow-lg p-8 space-y-6">
+                <h3 class="text-xl font-semibold text-gray-800 mb-4">Formulir Admin UKM</h3>
+                <form action="{{ url('/admin/store') }}" method="POST" class="space-y-5">
+                    @csrf
 
-               <!-- Nama UKM  -->
-               <div class="form-group">
-                  <label for="nama">Nama UKM</label>
-                  <input type="text" name="nama" class="form-control" id="nama" placeholder="Masukkan nama UKM">
-               </div>
+                    <!-- Nama UKM -->
+                    <div>
+                        <label for="nama" class="block text-gray-700 font-medium mb-1">Nama UKM</label>
+                        <input type="text" name="nama" id="nama" placeholder="Masukkan nama UKM"
+                               class="w-full border border-blue-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
+                    </div>
 
-               <!-- Pertanyaan 1: Minat utama -->
-               <!-- <div class="form-group">
-                  <label for="interest">Apa minat utama Anda dalam kegiatan ekstrakurikuler?</label>
-                  <select class="form-control" name="interest" id="interest">
-                     <option value="">Pilih Minat</option>
-                     <option value="Musik">Musik</option>
-                     <option value="Olahraga">Olahraga</option>
-                     <option value="Seni">Seni</option>
-                     <option value="Sastra">Sastra</option>
-                     <option value="Teknologi">Teknologi</option>
-                     <option value="Sosial">Sosial</option>
-                     <option value="Kewirausahaan">Kewirausahaan</option>
-                  </select>
-               </div> -->
+                    <div>
+                        <label for="question1" class="block text-gray-700 font-medium mb-1">Apakah organisasi ini aktif melibatkan anggotanya dalam kegiatan secara rutin?</label>
+                        <select name="question1" id="question1"
+                                class="w-full border border-blue-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
+                            <option value="">Pilih Opsi</option>
+                            <option value="Ya">Ya</option>
+                            <option value="Tidak">Tidak</option>
+                        </select>
+                    </div>
 
-               <!-- Pertanyaan 2: Jenis kegiatan -->
-               <div class="form-group">
-                  <label for="activity_type">Jenis kegiatan apakah yang Anda lebih suka lakukan di UKM?</label>
-                  <select class="form-control" name="activity_type" id="activity_type">
-                     <option value="">Pilih Jenis Kegiatan</option>
-                     <option value="Kompetisi">Kompetisi</option>
-                     <option value="Kolaborasi Tim">Kolaborasi Tim</option>
-                     <option value="Kegiatan Fisik">Kegiatan Fisik</option>
-                     <option value="Kreativitas">Kreativitas</option>
-                     <option value="Sosial">Sosial</option>
-                     <option value="Pengabdian Masyarakat">Pengabdian Masyarakat</option>
-                  </select>
-               </div>
+                    <div>
+                        <label for="question2" class="block text-gray-700 font-medium mb-1">Jenis organisasi apa yang paling menggambarkan organisasi ini?</label>
+                        <select name="question2" id="question2"
+                                class="w-full border border-blue-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
+                            <option value="">Pilih Jenis Organisasi</option>
+                            <option value="Organisasi pengembangan jiwa kepemimpinan">Organisasi pengembangan jiwa kepemimpinan?</option>
+                            <option value="Organisasi pengembangan minat bakat ( seni, olahraga, literasi, teknologi)">Organisasi pengembangan minat bakat ( seni, olahraga, literasi, teknologi)</option>
+                        </select>
+                    </div>
 
-               <!-- Pertanyaan 3: Ukuran komunitas -->
-               <div class="form-group">
-                  <label for="community_size">Bagaimana Anda menggambarkan ukuran komunitas yang diinginkan?</label>
-                  <select class="form-control" name="community_size" id="community_size">
-                     <option value="">Pilih Ukuran Komunitas</option>
-                     <option value="Kecil">Kecil (25-50 orang)</option>
-                     <option value="Sedang">Sedang (50-100 orang)</option>
-                     <option value="Besar">Besar (100+ orang)</option>
-                  </select>
-               </div>
+                     <div>
+                        <label for="question3" class="block text-gray-700 font-medium mb-1">Apa faktor utama yang menjadi prioritas dalam organisasi ini?</label>
+                        <select name="question3" id="question3" class="w-full border border-blue-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
+                            <option value="">Pilih Jawaban</option>
+                            <option value="Lingkungan yang mendukung dan positif">Lingkungan yang mendukung dan positif</option>
+                            <option value="Peluang belajar dan berkembang">Peluang belajar dan berkembang</option>
+                            <option value="Kesempatan untuk menunjukkan hasil atau prestasi">Kesempatan untuk menunjukkan hasil atau prestasi</option>
+                            <option value="Ruang untuk mengekspresikan ide">Ruang untuk mengekspresikan ide</option>
+                        </select>
+                    </div>
 
-               <!-- Pertanyaan 4: Waktu kegiatan -->
-               <div class="form-group">
-                  <label for="preferred_time">Kapan Anda lebih suka melakukan kegiatan UKM?</label>
-                  <select class="form-control" name="preferred_time" id="preferred_time">
-                     <option value="">Pilih Waktu Kegiatan</option>
-                     <option value="Pagi">Pagi</option>
-                     <option value="Sore">Sore</option>
-                     <option value="Malam">Malam</option>
-                     <option value="Akhir Pekan">Akhir Pekan</option>
-                     <option value="Fleksibel">Fleksibel</option>
-                  </select>
-               </div>
+                    <div>
+                        <label for="question4" class="block text-gray-700 font-medium mb-1">Jenis kegiatan apa yang paling sering dilakukan oleh organisasi ini?</label>
+                        <select name="question4" id="question4"
+                                class="w-full border border-blue-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
+                            <option value="">Pilih Jenis Kegiatan</option>
+                            <option value="Kompetisi">Kompetisi</option>
+                            <option value="Kolaborasi Tim">Kolaborasi Tim</option>
+                            <option value="Kegiatan Fisik">Kegiatan Fisik</option>
+                            <option value="Kreativitas">Kreativitas</option>
+                            <option value="Sosial">Sosial</option>
+                            <option value="Pengabdian Masyarakat">Pengabdian Masyarakat</option>
+                        </select>
+                    </div>
 
-               <div class="form-group">
-                  <label>Dalam organisasi ini anggota lebih sering berperan sebagai</label>
-                  <select class="form-control" name="question1" id="question1"> 
-                     <option value="">Pilih Jawaban</option>
-                     <option value="Pengatur strategi">Pengatur strategi</option>
-                     <option value="Pelaksana teknis">Pelaksana teknis</option>
-                     <option value="Pencatat/pendokumentasi">Pencatat/pendokumentasi</option>
-                     <option value="Tidak ada peran tertentu, tergantung situasi">Tidak ada peran tertentu, tergantung situasi</option>
-                  </select>
-               </div>
+                    <div>
+                        <label for="question5" class="block text-gray-700 font-medium mb-1">Tingkat komitmen yang diharapkan dari anggota dalam organisasi ini?</label>
+                        <select name="question5" id="question5"
+                                class="w-full border border-blue-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
+                            <option value="">Pilih Opsi</option>
+                            <option value="Komitmen Besar">Komitmen Besar</option>
+                            <option value="Cukup Besar">Cukup Besar</option>
+                            <option value="Sedang">Sedang</option>
+                            <option value="Kecil">Kecil</option>
+                        </select>
+                    </div>
 
-               <div class="form-group">
-                  <label>Saat mengadakan acara, anggota akan lebih sering</label>
-                  <select class="form-control" name="question2" id="question2">
-                     <option value="">Pilih Jawaban</option>
-                     <option value="Duduk dan menikmati sebagai peserta">Duduk dan menikmati sebagai peserta</option>
-                     <option value="Membantu di belakang layar">Membantu di belakang layar</option>
-                     <option value="Jadi pembicara/moderator/panitia inti">Jadi pembicara/moderator/panitia inti</option>
-                     <option value="Mengamati dan mencatat hal-hal menarik">Mengamati dan mencatat hal-hal menarik</option>
-                  </select>
-               </div>
+                    <div>
+                        <label for="question6" class="block text-gray-700 font-medium mb-1">Seberapa sering organisasi ini menyelenggarakan kegiatan atau aktivitas bagi anggotanya?</label>
+                        <select name="question6" id="question6"
+                                class="w-full border border-blue-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
+                            <option value="">Pilih Jawaban</option>
+                            <option value="Sering">Sering</option>
+                            <option value="Cukup">Cukup</option>
+                            <option value="Kadang-kadang">Kadang-kadang</option>
+                        </select>
+                    </div>
 
-               <div class="form-group">
-                  <label>Dalam organisasi ini anggota akan terlatih untuk</label>
-                  <select class="form-control"  name="question3" id="question3">
-                     <option value="">Pilih Jawaban</option>
-                     <option value="Membangun jaringan/relasi">Membangun jaringan/relasi</option>
-                     <option value="Menambah pengalaman">Menambah pengalaman</option>
-                     <option value="Melatih soft skill">Melatih soft skill</option>
-                     <option value="Meningkatkan CV/portofolio">Meningkatkan CV/portofolio</option>
-                  </select>
-               </div>
+                    <div>
+                        <label for="question7" class="block text-gray-700 font-medium mb-1">Seberapa besar organisasi ini mendorong anggotanya aktif di luar kegiatan akademik?</label>
+                        <select name="question7" id="question7"
+                                class="w-full border border-blue-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
+                            <option value="">Pilih Jawaban</option>
+                            <option value="Besar">Besar</option>
+                            <option value="Cukup">Cukup</option>
+                            <option value="Biasa saja">Biasa saja</option>
+                            <option value="Tidak tertarik">Tidak tertarik</option>
+                        </select>
+                    </div>
 
-               <div class="form-group">
-                  <label>Seberapa sering anggota mengikuti kegiatan di luar akademik</label>
-                  <select class="form-control"  name="question4" id="question4">
-                     <option value="">Pilih Jawaban</option>
-                     <option value="Tidak pernah">Tidak pernah</option>
-                     <option value="Kadang-kadang (sekali-dua kali sebulan)">Kadang-kadang (sekali-dua kali sebulan)</option>
-                     <option value="Cukup sering (sekali seminggu)">Cukup sering (sekali seminggu)</option>
-                     <option value="Sangat sering (lebih dari sekali seminggu)">Sangat sering (lebih dari sekali seminggu)</option>
-                  </select>
-               </div>
+                    <div>
+                        <label for="question8" class="block text-gray-700 font-medium mb-1">Alasan utama organisasi ini mendorong anggotanya aktif di luar kegiatan akademik?</label>
+                        <select name="question8" id="question8"
+                                class="w-full border border-blue-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
+                            <option value="">Pilih Jawaban</option>
+                            <option value="Membangun jaringan/relasi">Membangun jaringan/relasi</option>
+                            <option value="Menambah pengalaman">Menambah pengalaman</option>
+                            <option value="Melatih soft skill">Melatih soft skill</option>
+                            <option value="Meningkatkan CV/portofolio">Meningkatkan CV/portofolio</option>
+                        </select>
+                    </div>
 
-               <div class="form-group">
-                  <label>Berapa Waktu yang perlu disiapkan anggota dalam seminggu kegiatan di luar kuliah</label>
-                  <select class="form-control"  name="question5" id="question5">
-                     <option value="">Pilih Jawaban</option>
-                     <option value="1–3 jam">1–3 jam</option>
-                     <option value="4–7 jam">4–7 jam</option>
-                     <option value="8–12 jam">8–12 jam</option>
-                     <option value="Lebih dari 12 jam">Lebih dari 12 jam</option>
-                  </select>
-               </div>
+                    <div>
+                        <label for="question9" class="block text-gray-700 font-medium mb-1">Target jangka pendek apa yang ingin di capai organisasi ini bagi anggotanya melalui keikutsertaan dalam kegiatan di luar akademik?</label>
+                        <select name="question9" id="question9"
+                                class="w-full border border-blue-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
+                            <option value="">Pilih Jawaban</option>
+                            <option value="Pengembangan diri">Pengembangan diri</option>
+                            <option value="Belajar hal baru">Belajar hal baru</option>
+                            <option value="Eksplorasi minat">Eksplorasi minat</option>
+                            <option value="Keseruan dan kebersamaan">Keseruan dan kebersamaan</option>
+                        </select>
+                    </div>
 
-               <div class="form-group">
-                  <label>Anggota harus menyiapkan diri untuk bekerja dengan kelompok dalam bentuk?</label>
-                  <select class="form-control"  name="question6" id="question6">
-                     <option value="">Pilih Jawaban</option>
-                     <option value="memimpin dan mengarahkan">memimpin dan mengarahkan</option>
-                     <option value="mengikuti pemimpin yang jelas">mengikuti pemimpin yang jelas</option>
-                     <option value="Semua orang bekerja setara, tanpa pemimpin tetap">Semua orang bekerja setara, tanpa pemimpin tetap</option>
-                     <option value="bekerja sendiri, tidak terlalu suka kerja kelompok">bekerja sendiri, tidak terlalu suka kerja kelompok</option>
-                  </select>
-               </div>
+                    <!-- <label for="question10" class="block text-black font-medium mb-2">Apakah organisasi ini terbuka untuk semua jurusan?</label>
+    <div class="flex items-center gap-x-6">
+        <label class="inline-flex items-center">
+            <input type="radio" name="question10" value="Ya" class="text-blue-600 focus:ring-blue-400">
+            <span class="ml-2 text-black">Ya</span>
+        </label>
+        <label class="inline-flex items-center">
+            <input type="radio" name="question10" value="Tidak" class="text-blue-600 focus:ring-blue-400">
+            <span class="ml-2 text-black">Tidak</span>
+        </label>
+    </div>
+</div> -->
 
-               <div class="form-group">
-                  <label>Dalam kegiatan anggota akan merasakan</label>
-                  <select class="form-control" name="question7" id="question7">
-                     <option value="">Pilih Jawaban</option>
-                     <option value="Keseruan dan kebersamaan">Keseruan dan kebersamaan</option>
-                     <option value="Peluang belajar hal baru">Peluang belajar hal baru</option>
-                     <option value="Rasa tenang dan pengembangan diri">Rasa tenang dan pengembangan diri</option>
-                     <option value="Ruang untuk eksplorasi minat pribadi">Ruang untuk eksplorasi minat pribadi</option>
-                  </select>
-               </div>
+                    <!-- Tombol Submit -->
+                    <div class="text-center">
+                        <button type="submit"
+                                class="bg-blue-600 text-white font-semibold px-6 py-3 rounded-full hover:bg-blue-700 transition duration-200">
+                            Simpan Data Admin UKM
+                        </button>
+                    </div>
 
-               <div class="form-group">
-                  <label>Saat diberi tanggung jawab anggota diharuskan untuk</label>
-                  <select class="form-control"  name="question8" id="question8">
-                     <option value="">Pilih Jawaban</option>
-                     <option value="Mengambilnya dengan semangat">Mengambilnya dengan semangat</option>
-                     <option value="Mengerjakannya sesuai arahan">Mengerjakannya sesuai arahan</option>
-                     <option value="Delegasikan jika tidak yakin">Delegasikan jika tidak yakin</option>
-                     <option value="Lebih suka tugas kecil atau ringan">Lebih suka tugas kecil atau ringan</option>
-                  </select>
-               </div>
-
-               <div class="form-group">
-                  <label>Dalam organisasi ini lebih bersifat</label>
-                  <select class="form-control" name="question9" id="question9">
-                     <option value="">Pilih Jawaban</option>
-                     <option value="Terstruktur dan rapi">Terstruktur dan rapi</option>
-                     <option value="Fleksibel dan spontan">Fleksibel dan spontan</option>
-                     <option value="Tergantung suasana hati">Tergantung suasana hati</option>
-                     <option value="Tegas dan disiplin">Tegas dan disiplin</option>
-                  </select>
-               </div>
-
-               <div class="form-group">
-                  <label>Kegiatan ini akan membuat anggotanya</label>
-                  <select class="form-control" name="question10" id="question10">
-                     <option value="">Pilih Jawaban</option>
-                     <option value="Lebih percaya diri">Lebih percaya diri</option>
-                     <option value="Lebih kreatif">Lebih kreatif</option>
-                     <option value="Lebih teratur dan disiplin">Lebih teratur dan disiplin</option>
-                     <option value="Lebih dikenal banyak orang">Lebih dikenal banyak orang</option>
-                  </select>
-               </div>
-
-               <div class="form-group">
-                  <label>Seberapa besar komitmen yang diperlukan untuk organisasi ini</label>
-                  <select class="form-control"  name="question11" id="question11">
-                     <option value="">Pilih Jawaban</option>
-                     <option value="Sangat besar, siap aktif penuh">Sangat besar, siap aktif penuh</option>
-                     <option value="Cukup besar, asal sesuai jadwal">Cukup besar, asal sesuai jadwal</option>
-                     <option value="Sedang, tergantung beban kuliah">Sedang, tergantung beban kuliah</option>
-                     <option value="Kecil, ikut saat sempat">Kecil, ikut saat sempat</option>
-                  </select>
-               </div>
-
-               <div class="form-group">
-                  <label>Yang akan didapatkan anggota saat mengikuti kegiatan ini</label>
-                  <select class="form-control"  name="question12" id="question12">
-                     <option value="">Pilih Jawaban</option>
-                     <option value="Meningkatkan skill tertentu">Meningkatkan skill tertentu</option>
-                     <option value="Dapat pengalaman organisasi">Dapat pengalaman organisasi</option>
-                     <option value="Lebih kenal banyak orang">Lebih kenal banyak orang</option>
-                     <option value="Dapat sertifikat/penghargaan">Dapat sertifikat/penghargaan</option>
-                  </select>
-               </div>
-
-               <div class="form-group">
-                  <label>Seberapa besar organisasi ini berkontribusi dalam lingkungan sekitar</label>
-                  <select class="form-control"  name="question13" id="question13">
-                     <option value="">Pilih Jawaban</option>
-                     <option value="Sangat sering">Sangat sering</option>
-                     <option value="Sering">Sering</option>
-                     <option value="Kadang-kadang">Kadang-kadang</option>
-                     <option value="Jarang">Jarang</option>
-                  </select>
-               </div>
-
-               <div class="form-group">
-                  <label>Organisasi ini sering melakukan kegiatan yang</label>
-                  <select class="form-control"  name="question14" id="question14">
-                     <option value="">Pilih Jawaban</option>
-                     <option value="Ada banyak interaksi dan diskusi">Ada banyak interaksi dan diskusi</option>
-                     <option value="Lebih banyak praktik langsung">Lebih banyak praktik langsung</option>
-                     <option value="Lebih banyak eksplorasi mandiri">Lebih banyak eksplorasi mandiri</option>
-                     <option value="Fokus pada tugas yang jelas">Fokus pada tugas yang jelas</option>
-                  </select>
-               </div>
-
-               <div class="text-center">
-                  <button type="submit" class="btn btn-primary">Simpan Data Admin UKM</button>
-               </div>
-            </form>
+                </form>
             </div>
         </div>
     </div>

@@ -19,35 +19,58 @@
                     <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
                         {{ __('Pengguna') }}
                     </x-nav-link>  
-                    <x-nav-link :href="route('user.Riwayat_pendaftaran')" :active="request()->routeIs('dashboard')">
-                        {{ __('Riwayat_pendaftaran') }}
-                    </x-nav-link>
+                    <x-nav-link :href="route('berita.index')" :active="request()->routeIs('berita.index')">
+                        {{ __('Berita') }}
+                    </x-nav-link>  
                     @endcan
                   
-                    <!-- <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Recruitment') }}
-                    </x-nav-link> -->
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Forum') }}
-                    </x-nav-link>
+
                     @unless(auth()->user()->hasRole('super_admin'))
+
                     @can('manage ukm')
                     <x-nav-link :href="route('ukm.index')" :active="request()->routeIs('dashboard')">
                         {{ __('UKM') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('ukm.recomendation')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('list.recomendation')" :active="request()->routeIs('dashboard')">
                         {{ __('Form Rekomendasi') }}
                     </x-nav-link>
                     <x-nav-link :href="route('ukm.Riwayat_pendaftaran')" :active="request()->routeIs('dashboard')">
-                        {{ __('Riwayat_pendaftaran') }}
+                        {{ __('Riwayat pendaftaran') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('daftar_anggota')" :active="request()->routeIs('dashboard')">
+                        {{ __('Daftar Anggota') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('abouts.index')" :active="request()->routeIs('dashboard')">
+                        {{ __('Tentang Kami') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('kegiatanukm.index')" :active="request()->routeIs('dashboard')">
+                        {{ __('Foto Kegiatan') }}
+                    </x-nav-link>
+                    @endcan 
+
+                    @can('manage ormawa')
+                    <x-nav-link :href="route('ormawa.index')" :active="request()->routeIs('dashboard')">
+                        {{ __('ORMAWA') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('list.recmawa')" :active="request()->routeIs('dashboard')">
+                        {{ __('Form Rekomendasi') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('ormawa.Riwayat_pendaftaran')" :active="request()->routeIs('dashboard')">
+                        {{ __('Riwayat pendaftaran') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('daftar_anggota')" :active="request()->routeIs('dashboard')">
+                        {{ __('Daftar Anggota') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('tentangkami.index')" :active="request()->routeIs('dashboard')">
+                        {{ __('Tentang Kami') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('kegiatanormawa.index')" :active="request()->routeIs('dashboard')">
+                        {{ __('Foto Kegiatan') }}
                     </x-nav-link>
                     @endcan 
                    
                     @endunless
-                  
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Data_pendaftar') }}
-                    </x-nav-link>
+                 
                   
                 </div>
             </div>

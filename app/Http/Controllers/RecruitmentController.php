@@ -13,12 +13,25 @@ class RecruitmentController extends Controller
     public function index()
     {
         $user = Auth::user();
+        
 
         $recruitments = Recruitment::with('Adminukm')->where('Adminukm_id', $user->id)->first();
         if (!$recruitments) {
             return redirect()->route('ukm.Riwayat_pendaftaran');
         }
         return view('ukm.Riwayat_pendaftaran', compact('recruitments'));
+    }
+    
+
+    public function index_ormawa()
+    {
+        $user = Auth::user();
+
+        $recruitments = Recruitment::with('AdminOrmawa')->where('AdminOrmawa_id', $user->id)->first();
+        if (!$recruitments) {
+            return redirect()->route('ormawa.Riwayat_pendaftaran');
+        }
+        return view('ormawa.Riwayat_pendaftaran', compact('recruitments'));
     }
 
     public function riwayat()
@@ -36,11 +49,12 @@ class RecruitmentController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string',
-            'nim' => 'required|integer|unique:recruitment,nim',
-            'email' => 'required|string|unique:recruitment,email',
+            'nim' => 'required|string',
+            'email' => 'required|string',
             'phone' => 'nullable|string',
             'study_program' => 'required|string',
             'semester' => 'required|integer',
+            // 'bersedia' => 'required|string',
             'gender' => 'required|in:Male,Female',
             'reason' => 'required|string',
             'photo' => 'nullable|string',

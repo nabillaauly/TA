@@ -35,7 +35,7 @@
                     </div>
 
                     <div>
-                        <h3 class="text-indigo-950 text-xl font-bold">About</h3>
+                        <h3 class="text-indigo-950 text-xl font-bold">Tentang</h3>
                         <p>
                             {{$ukm->about}}
                         </p>
@@ -53,4 +53,21 @@
             </div>
         </div>
     </div>
+
+     <!-- SweetAlert2 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    @if(session('success'))
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Berhasil!',
+                    text: '{{ session("success") }}',
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: 'OK'
+                });
+            });
+        </script>
+    @endif
 </x-app-layout>

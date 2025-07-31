@@ -14,13 +14,6 @@ class recomendation extends Model
     protected $fillable = [
         'Adminukm_id',
         'nama',
-        // 'interest',
-        'activity_type',
-        'community_size',
-        'preferred_time',
-        'organizer_interest',
-        'skills',
-        'social_activity',
         'question1',
         'question2',
         'question3',
@@ -30,11 +23,7 @@ class recomendation extends Model
         'question7',
         'question8',
         'question9',
-        'question10',
-        'question11',
-        'question12',
-        'question13',
-        'question14',
+
     ];
 
     public function Adminukm()

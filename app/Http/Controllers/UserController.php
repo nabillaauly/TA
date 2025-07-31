@@ -20,7 +20,7 @@ class UserController extends Controller
 
     public function create()
     {
-        $roles = Role::all();
+        $roles = Role::where('name', '!=', 'user')->get();
         return view('user.create', compact('roles'));
     }
 
@@ -35,7 +35,6 @@ class UserController extends Controller
 
         // Menyiapkan data user
         $data = $request->only('name', 'email');
-        
 
 
         // Hash password
@@ -51,36 +50,40 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::findOrFail($id);
-        $roles = Role::all();
+        $roles = Role::where('name', '!=', 'user')->get();
         return view('user.edit', compact('user', 'roles'));
     }
 
     public function update(Request $request, $id)
     {
-        $request->validate([
+        $rules = [
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,' . $id,
-            'password' => 'nullable|string|min:8|confirmed',
             'roles' => 'required|array',
-        ]);
+        ];
+
+        if ($request->filled('password')) {
+            $rules['password'] = ['nullable', 'string', 'min:8', 'confirmed'];
+        }
+
+        $request->validate($rules);
 
         $user = User::findOrFail($id);
         $data = $request->only('name', 'email');
-        
 
-
-        // Menangani password jika diubah
-        if ($request->password) {
+        if ($request->filled('password')) {
             $data['password'] = Hash::make($request->password);
         }
 
-        // Update user dan sync role
         $user->update($data);
+
         $roles = Role::whereIn('id', $request->roles)->pluck('name')->toArray();
         $user->syncRoles($roles);
 
         return redirect()->route('users.index')->with('success', 'User updated successfully.');
     }
+
+
 
     public function destroy($id)
     {
@@ -113,7 +116,7 @@ class UserController extends Controller
     }
 
     public function riwayat()
-    {        
+    {
         $recruitments = Recruitment::with('Adminukm')->get();
         return view('ukm.Riwayat_pendaftaran', compact('recruitments'));
     }

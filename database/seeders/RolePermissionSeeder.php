@@ -23,6 +23,7 @@ class RolePermissionSeeder extends Seeder
             'manage riwayat_pendaftaran',
             'manage forum',
             'manage ukm',
+            'manage ormawa',
             'data_pendaftar',
         ];
 
@@ -41,6 +42,10 @@ class RolePermissionSeeder extends Seeder
         $AdminukmRole = Role::firstOrCreate(['name' => 'Adminukm']);
         $AdminukmPermissions = ['manage ukm','data_pendaftar', 'manage reqruitment'];
         $AdminukmRole->syncPermissions($AdminukmPermissions);
+
+        $AdminOrmawa = Role::firstOrCreate(['name' => 'AdminOrmawa']);
+        $AdminOrmawaPermissions = ['manage ormawa','data_pendaftar', 'manage reqruitment'];
+        $AdminOrmawa->syncPermissions($AdminOrmawaPermissions);
 
         $superAdminRole = Role::firstOrCreate(['name' => 'super_admin']);
         $superAdminPermissions = ['manage pengguna', 'manage forum'];

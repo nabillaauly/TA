@@ -17,10 +17,12 @@ class recruitment extends Model
         'phone',
         'study_program',
         'semester',
+        // 'bersedia',
         'gender',
         'reason',
         'photo',
-        'Adminukm_id', // Pastikan ini benar
+        'created_at',
+        'Adminukm_id', // isi tabel 
     ];
 
     public function Adminukm()

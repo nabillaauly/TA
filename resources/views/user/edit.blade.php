@@ -13,12 +13,14 @@
                 <form method="POST" action="{{ route('users.update', $user->id) }}" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
-                    
+
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <!-- Name -->
                         <div class="mb-6">
-                            <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
-                            <input type="text" id="name" name="name" class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" value="{{ old('name', $user->name) }}" required>
+                            <label for="name" class="block text-sm font-medium text-gray-700">Nama</label>
+                            <input type="text" id="name" name="name"
+                                class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                                value="{{ old('name', $user->name) }}" required>
                             @error('name')
                                 <span class="text-red-600 text-sm mt-1">{{ $message }}</span>
                             @enderror
@@ -26,8 +28,10 @@
 
                         <!-- Email -->
                         <div class="mb-6">
-                            <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-                            <input type="email" id="email" name="email" class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" value="{{ old('email', $user->email) }}" required>
+                            <label for="email" class="block text-sm font-medium text-gray-700">Username</label>
+                            <input type="email" id="email" name="email"
+                                class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                                value="{{ old('email', $user->email) }}" required>
                             @error('email')
                                 <span class="text-red-600 text-sm mt-1">{{ $message }}</span>
                             @enderror
@@ -36,12 +40,25 @@
                         <!-- Password -->
                         <div class="mb-6">
                             <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
-                            <input type="password" id="password" name="password" class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                            <input type="password" id="password" name="password"
+                                class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                             <span class="text-sm text-gray-500">Kosongkan jika tidak ingin mengubah password</span>
                             @error('password')
                                 <span class="text-red-600 text-sm mt-1">{{ $message }}</span>
                             @enderror
                         </div>
+                        <!-- Confirm Password -->
+                        <div class="mb-6">
+                            <label for="password_confirmation"
+                                class="block text-sm font-medium text-gray-700">Konfirmasi Password</label>
+                            <input type="password" id="password_confirmation" name="password_confirmation"
+                                class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                            @error('password_confirmation')
+                                <span class="text-red-600 text-sm mt-1">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+
 
                         <!-- Avatar
                         <div class="mb-6">
@@ -64,7 +81,8 @@
                         <!-- Roles -->
                         <div class="mb-6">
                             <label for="roles" class="block text-sm font-medium text-gray-700">Roles</label>
-                            <select id="roles" name="roles[]" multiple class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                            <select id="roles" name="roles[]" multiple
+                                class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                 @foreach ($roles as $role)
                                     <option value="{{ $role->id }}" {{ in_array($role->id, $user->roles->pluck('id')->toArray()) ? 'selected' : '' }}>
                                         {{ $role->name }}
@@ -79,14 +97,17 @@
 
                     <!-- Form Actions -->
                     <div class="flex justify-end gap-4 mt-6">
-                        <button type="submit" class="px-6 py-3 bg-indigo-600 text-white font-semibold rounded-lg shadow-sm hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500">Simpan</button>
-                        <a href="{{ route('users.index') }}" class="px-6 py-3 bg-gray-300 text-gray-800 font-semibold rounded-lg shadow-sm hover:bg-gray-400 focus:ring-2 focus:ring-gray-500">Batal</a>
+                        <button type="submit"
+                            class="px-6 py-3 bg-indigo-600 text-white font-semibold rounded-lg shadow-sm hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500">Simpan</button>
+                        <a href="{{ route('users.index') }}"
+                            class="px-6 py-3 bg-gray-300 text-gray-800 font-semibold rounded-lg shadow-sm hover:bg-gray-400 focus:ring-2 focus:ring-gray-500">Batal</a>
                     </div>
                 </form>
 
                 <!-- Hidden Form to Remove Avatar -->
                 @if($user->avatar)
-                    <form id="remove-avatar" action="{{ route('users.removeAvatar', $user->id) }}" method="POST" style="display:none;">
+                    <form id="remove-avatar" action="{{ route('users.removeAvatar', $user->id) }}" method="POST"
+                        style="display:none;">
                         @csrf
                         @method('DELETE')
                     </form>
@@ -94,4 +115,21 @@
             </div>
         </div>
     </div>
+
+     <!-- SweetAlert2 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    @if(session('success'))
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Berhasil!',
+                    text: '{{ session("success") }}',
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: 'OK'
+                });
+            });
+        </script>
+    @endif
 </x-app-layout>

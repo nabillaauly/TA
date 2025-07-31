@@ -24,7 +24,7 @@
 
                         <!-- Email -->
                         <div class="mb-6">
-                            <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                            <label for="email" class="block text-sm font-medium text-gray-700">Username</label>
                             <input type="email" id="email" name="email" class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" value="{{ old('email') }}" required placeholder="Enter email address">
                             @error('email')
                                 <span class="text-red-600 text-sm mt-1">{{ $message }}</span>
@@ -49,12 +49,10 @@
                             @enderror
                         </div>
 
-
-
                         <!-- Roles -->
                         <div class="mb-6">
                             <label for="roles" class="block text-sm font-medium text-gray-700">Roles</label>
-                            <select id="roles" name="roles[]" multiple class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                             <select id="roles" name="roles[]" multiple class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                 @foreach ($roles as $role)
                                     <option value="{{ $role->name }}" {{ in_array($role->name, old('roles', [])) ? 'selected' : '' }}>{{ $role->name }}</option>
                                 @endforeach
@@ -73,4 +71,6 @@
             </div>
         </div>
     </div>
+
+    
 </x-app-layout>

@@ -40,39 +40,45 @@ class UkmController extends Controller
         if ($ukm) {
             return redirect()->back()->withErrors(['ukm' => 'Failed! Anda sudah membuat ukm']);
         }
-    
+
         try {
             // Jalankan transaksi untuk memastikan atomicity
-            DB::transaction(function() use ($request, $user) {
+            DB::transaction(function () use ($request, $user) {
                 // Validasi data dari request
                 $validated = $request->validated();
 
+                // Upload gambar secara manual jika ada
                 if ($request->hasFile('logo')) {
-                        $file = $request->file('logo');
-                        logger('File info: ' . print_r($file, true));
-                    } else {
-                        logger('No file uploaded');
+                    $file = $request->file('logo');
+                    $filename = time() . '_' . $file->getClientOriginalName();
+                    $destination = public_path('storage/logo');
+
+                    // Buat folder jika belum ada
+                    if (!file_exists($destination)) {
+                        mkdir($destination, 0755, true);
                     }
-    
-                // if ($request->hasFile('logo')) {
-                //     $logoPath = $request->file('logo')->store('logos/' . date('Y/m/d'), 'public');
-                //     $validated['logo'] = $logoPath;
-                // }
-    
+
+                    $file->move($destination, $filename);
+
+                    // Simpan path relatif ke database
+                    $validated['logo'] = 'logo/' . $filename;
+                }
+
                 // Tambahkan slug dan ID 
                 $validated['slug'] = Str::slug($validated['name']);
                 $validated['Adminukm_id'] = $user->id;
-    
+
                 // Buat data company baru
                 ukm::create($validated);
             });
+
         } catch (\Exception $e) {
             // Tangani error jika transaksi gagal
             return redirect()->back()->withErrors(['error' => 'Terjadi kesalahan: ' . $e->getMessage()]);
         }
-    
+
         // Redirect ke halaman index setelah berhasil
-        return redirect()->route('ukm.index');
+        return redirect()->route('ukm.index')->with('success', 'User updated successfully.');
     }
 
     // Fungsi untuk menampilkan form edit UKM
@@ -117,7 +123,7 @@ class UkmController extends Controller
             return redirect()->back()->withErrors(['error' => 'Terjadi kesalahan: ' . $e->getMessage()]);
         }
 
-        return redirect()->route('ukm.index');
+        return redirect()->route('ukm.index')->with('success', 'User updated successfully.');
     }
 
     // Fungsi untuk menghapus UKM
